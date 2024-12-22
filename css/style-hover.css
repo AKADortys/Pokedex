@@ -1,0 +1,44 @@
+#poke-type>img:hover{
+    transform: scale(1.1);
+}
+
+.poke-stat>li:hover{
+    transform: scale(1.1);
+}
+
+.toggle-shiny:disabled{
+    background: grey;
+}
+
+.toggle-shiny:hover{
+    transform: scale(1.2);
+}
+
+#menu-burger:hover{
+    transform: scale(1.1);
+}
+
+aside ul>li>img:hover{
+    transform: scale(1.2);
+}
+
+#filter-generation>li:hover{
+    transform: scale(1.2);
+}
+
+.card:hover{
+    transform: scale(1.04);
+}
+
+.SP-type>img:hover{
+    transform: translateY(-0.3em);
+}
+
+#header-list>li:hover{
+    background-color: grey;
+}
+
+#poke-img-shiny-single:hover,#poke-img-single:hover
+{
+    transform: scale(1.05);
+}

@@ -1,0 +1,136 @@
+
+#menu-burger{
+    position: fixed;
+    left: 0.5em;
+    top: 50%;
+    width: 3%;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+
+
+aside{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(215, 215, 215);
+    width: 25%;
+    justify-content: flex-start;
+    align-items: stretch;
+    position: fixed;
+    z-index: 100;
+    left: -100%;
+    transition: left 0.2s ease;
+    overflow-y: auto; /* Défilement vertical uniquement */
+    overflow-x: hidden; /* Pas de défilement horizontal */
+    margin: 0 auto; /* Centrage horizontal */
+    padding: 0;
+    box-sizing: border-box; /* Inclut le padding dans les dimensions */
+    scrollbar-width: thin; /* Scrollbar fine (Firefox) */
+}
+
+aside ul>li>img{
+    border: 0.1em solid black;
+    border-radius: 10%;
+    transition: transform 0.2s ease-in;
+    width: 50%;
+}
+
+#search-error{
+    color: red;
+    font-weight: bolder;
+    padding: 0 0.3em;
+}
+
+
+
+#filter-types{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0.4em;
+    list-style: none;
+}
+
+#filter-types>li{
+    width: 20%;
+}
+
+.active{
+    transform: scale(1.2);
+}
+
+#filter-generation{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+    margin: 0;
+    padding: 0.4em;
+}
+
+#filter-generation>li{
+    width: 30%;
+    text-align: center;
+    background-color: whitesmoke;
+    padding: 0.1em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 0.1em solid black
+}
+
+#User-input{
+    margin: 0.4em;
+    border: 0.1em solid black;
+    border-radius: 5%;
+}
+
+.custom_input {
+	display: flex;
+	align-items: center;
+	position: relative;
+	max-width: 100%;
+}
+
+.input {
+	font-size: 18px;
+	padding: 5px 10px;
+	width: 100%;
+	padding-left: 35px;
+	outline: none;
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #C4D1EB;
+	border-radius: 5px;
+	box-shadow: 3px 3px 2px 0px black;
+	transition: .3s ease;
+}
+
+.input:focus {
+	background: #F2F2F2;
+	border: 1px solid #5A7EC7;
+	border-radius: 10px;
+}
+
+.input::placeholder {
+	color: #DDDDDD;
+}
+
+.svg_icon {
+	position: absolute;
+	left: 10px;
+	fill: #4660DC;
+	width: 18px;
+	height: 18px;
+}
+
+
+#totalPokemon{
+    text-align: center;
+    font-weight: bold;
+    margin: 0.5em 0;
+    padding: 0.2em;
+}
+

@@ -1,0 +1,169 @@
+#SinglePokemon{
+    width: 80%;
+    font-family: 'Preahvihear', sans-serif;
+    display: none;
+}
+
+.SP-type>img{
+    width: 10%;
+    box-shadow: 1px 4px 3px 0px rgba(0, 0, 0, 1);
+    transition: transform 0.3s ease;
+    border: 0.1em inset black;
+    border-radius: 10%;
+    margin: 0 0.2em;
+    transition: transform 0.3s ease;
+}
+
+.SP-image{
+    display: flex;
+    justify-content: center;
+}
+
+.SingleCard{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.SP-identification{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    background-color: rgba(240, 248, 255, 0.527);
+    gap: 0.8em 0;
+    border: 0.2em solid black;
+    border-radius: 1%;
+}
+
+.SP-identification>div{
+    width: 100%;
+    text-align: center;
+}
+
+#poke-img-shiny-single,#poke-img-single{
+    width: 50%;
+    transition: transform ease-in 0.2s;
+}
+
+
+.SP-body{
+    width: 50%;
+    background-color: rgba(240, 248, 255, 0.527);
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 1%;
+    justify-content: center;
+}
+
+.SP-body h3{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 0.6em;
+    margin: 0;
+    color: aliceblue;
+}
+
+.SP-stats{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-top: 0.2em outset black;
+    border-radius: 1%;
+    background: #FFFFFF;
+    background: radial-gradient(circle farthest-side at top right, #FFFFFF 0%, #D8D2D4 100%);
+
+}
+
+.chart-radar{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border-radius: 1%;
+    background: #FFFFFF;
+    background: radial-gradient(circle farthest-side at top right, #FFFFFF 0%, #D8D2D4 100%);
+}
+
+.chart-bar{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+    border-top: 0.2em outset black;
+    background: #FFFFFF;
+    background: radial-gradient(circle farthest-side at top right, #FFFFFF 0%, #D8D2D4 100%);
+}
+
+.SP-info{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #D8D2D4;
+}
+
+.SP-info>p{
+    text-align: center;
+    width: 40%;
+    font-weight: bold;
+    padding: 0.5em 0.1em;
+    margin: 0;
+}
+
+.SP-info>p>span{
+    color: green;
+    font: 500;
+    text-decoration: underline yellowgreen;
+}
+
+
+.chart, .SP-resistance{
+    width: 20vw;
+    height: 40vh;
+}
+
+.evolution{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.evolution{
+    width: 100%;
+}
+
+.evolution li{
+    width: 100%;
+    text-align: center;
+}
+
+.SP-evolution-pre,
+.SP-evolution-next{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.SP-evolution-pre>li>img,.SP-evolution-next>li>img{
+    width: 20%;
+}
+
+.talents{
+    width: 100%;
+    text-align: center;
+    background-color: #D8D2D4;
+    border-bottom: solid 0.2em black;
+    border-top: solid 0.2em black;
+    margin-top: 0.2em;
+}

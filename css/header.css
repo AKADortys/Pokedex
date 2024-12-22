@@ -1,0 +1,35 @@
+header{
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+header>div{
+    display: flex;
+    align-items: center;
+}
+
+header img{
+    width: 7%;
+}
+
+#header-list{
+    width: 60%;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5em;
+}
+
+#header-list>li{
+    font-size: 1em;
+    font-weight: bold;
+    padding: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+}

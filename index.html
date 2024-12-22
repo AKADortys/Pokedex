@@ -1,0 +1,83 @@
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/x-icon" href="/images/pokemon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-hover.css" />
+    <link rel="stylesheet" href="css/singlePokemon.css" />
+    <link rel="stylesheet" href="css/aside.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/content-pokemon.css" />
+  </head>
+
+  <body>
+      <button id="btn-prev" title="Pokémon précédent"></button>
+      <button id="btn-next" title="Pokémon suivant"></button>
+    <img
+      src="images/menu-burger.png"
+      alt="iconAside"
+      id="menu-burger"
+      title="Appliquer des filtres"
+    />
+    <header>
+      <div>
+        <img src="images/pokeball.png" alt="Image Pokéball" />
+        <h1>Pokédex</h1>
+      </div>
+      <ul id="header-list">
+        <li data-section="content-pokemon">Recherche Pokédex</li>
+        <li data-section="SinglePokemon">Fiche Pokémon</li>
+      </ul>
+    </header>
+    <aside>
+      <button id="close-aside" title="Fermez la barre de filtres">X</button>
+      
+      <span id="totalPokemon"></span>
+      <div>
+        <h2>Filtrer par nom</h2>
+        <div class="custom_input">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="svg_icon bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            ></path>
+          </svg>
+          <input
+            class="input"
+            type="text"
+            placeholder="Nom du Pokémon"
+            id="User-input"
+          />
+        </div>
+        <span id="search-error"></span>
+      </div>
+      <div>
+        <h2>Filtrer par type</h2>
+        <ul id="filter-types"></ul>
+      </div>
+      <div>
+        <h2>Filtrer par Génération</h2>
+        <ul id="filter-generation"></ul>
+      </div>
+      <button onclick="api.filterGroup()">Recherche</button>
+      <button onclick="api.filterReset()">Réinitialiser</button>
+    </aside>
+    <main>
+      <div id="content-pokemon"></div>
+      <div id="SinglePokemon">   
+      </div>
+    </main>
+    <script src="javascript/pokedex.js"></script>
+    <script src="javascript/header.js"></script>
+    <script src="javascript/search-input.js"></script>
+    <script src="javascript/aside.js"></script>
+    <script src="javascript/pokemon-card.js"></script>
+    <script type="text/javascript" src="node_modules/chart.js/dist/chart.umd.js"></script>
+    <script src="javascript/chartPokemon.js"></script>
+  </body>
+</html>
