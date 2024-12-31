@@ -1,10 +1,10 @@
-#SinglePokemon{
+#SinglePokemon {
     width: 80%;
     font-family: 'Preahvihear', sans-serif;
     display: none;
 }
 
-.SP-type>img{
+.SP-type>img {
     width: 10%;
     box-shadow: 1px 4px 3px 0px rgba(0, 0, 0, 1);
     transition: transform 0.3s ease;
@@ -14,18 +14,18 @@
     transition: transform 0.3s ease;
 }
 
-.SP-image{
+.SP-image {
     display: flex;
     justify-content: center;
 }
 
-.SingleCard{
+.SingleCard {
     width: 100%;
     display: flex;
     align-items: flex-start;
 }
 
-.SP-identification{
+.SP-identification {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,18 +37,19 @@
     border-radius: 1%;
 }
 
-.SP-identification>div{
+.SP-identification>div {
     width: 100%;
     text-align: center;
 }
 
-#poke-img-shiny-single,#poke-img-single{
+#poke-img-shiny-single,
+#poke-img-single {
     width: 50%;
     transition: transform ease-in 0.2s;
 }
 
 
-.SP-body{
+.SP-body {
     width: 50%;
     background-color: rgba(240, 248, 255, 0.527);
     display: flex;
@@ -57,17 +58,18 @@
     justify-content: center;
 }
 
-.SP-body h3{
+.SP-body h3 {
     box-sizing: border-box;
     width: 100%;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     text-align: center;
     padding: 0.6em;
     margin: 0;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
+    border-bottom: 0.2em solid black;
 }
 
-.SP-stats{
+.SP-stats {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -79,7 +81,7 @@
 
 }
 
-.chart-radar{
+.chart-radar {
     width: 100%;
     height: 50vh;
     display: flex;
@@ -90,7 +92,7 @@
     background: radial-gradient(circle farthest-side at top right, #FFFFFF 0%, #D8D2D4 100%);
 }
 
-.chart-bar{
+.chart-bar {
     width: 100%;
     height: 30vh;
     display: flex;
@@ -101,7 +103,7 @@
     background: radial-gradient(circle farthest-side at top right, #FFFFFF 0%, #D8D2D4 100%);
 }
 
-.SP-info{
+.SP-info {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -109,7 +111,7 @@
     background-color: #D8D2D4;
 }
 
-.SP-info>p{
+.SP-info>p {
     text-align: center;
     width: 40%;
     font-weight: bold;
@@ -117,35 +119,36 @@
     margin: 0;
 }
 
-.SP-info>p>span{
+.SP-info>p>span {
     color: green;
     font: 500;
     text-decoration: underline yellowgreen;
 }
 
 
-.chart, .SP-resistance{
+.chart,
+.SP-resistance {
     width: 20vw;
     height: 40vh;
 }
 
-.evolution{
+.evolution {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.evolution{
+.evolution {
     width: 100%;
 }
 
-.evolution li{
+.evolution li {
     width: 100%;
     text-align: center;
 }
 
 .SP-evolution-pre,
-.SP-evolution-next{
+.SP-evolution-next {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -155,11 +158,12 @@
     padding: 0;
 }
 
-.SP-evolution-pre>li>img,.SP-evolution-next>li>img{
+.SP-evolution-pre>li>img,
+.SP-evolution-next>li>img {
     width: 20%;
 }
 
-.talents{
+.talents {
     width: 100%;
     text-align: center;
     background-color: #D8D2D4;

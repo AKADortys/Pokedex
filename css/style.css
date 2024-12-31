@@ -1,31 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
 
-body{
+body {
     padding-top: 3em;
-    background-color: grey;
     margin: 0;
-    font-size: 1em;
-    background-color: rgb(34, 33, 33);
+    background-color: rgb(253, 247, 247);
 }
 
-h1{
+h1 {
     margin: 0;
     padding: 0;
     width: 30%;
 }
 
-h2{
+h2 {
     width: 100%;
     font-size: 0.8em;
     text-align: center;
     margin: 0;
     padding: 0.3em 0;
     background-color: black;
-    color: aliceblue;
+    color: white;
+    border-bottom: 0.2em solid white;
 }
 
 
-main{
+main {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -35,7 +34,8 @@ main{
     padding: 0.5em;
 }
 
-#btn-prev,#btn-next{
+#btn-prev,
+#btn-next {
     position: fixed;
     z-index: 100;
     top: 50%;
@@ -50,11 +50,11 @@ main{
     display: none;
 }
 
-#btn-prev{
+#btn-prev {
     left: 0.5em;
     transform: scale(-1);
 }
 
-#btn-next{
+#btn-next {
     right: 0.5em;
 }

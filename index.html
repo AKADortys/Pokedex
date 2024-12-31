@@ -13,8 +13,8 @@
   </head>
 
   <body>
-      <button id="btn-prev" title="Pokémon précédent"></button>
-      <button id="btn-next" title="Pokémon suivant"></button>
+    <button id="btn-prev" title="Pokémon précédent"></button>
+    <button id="btn-next" title="Pokémon suivant"></button>
     <img
       src="images/menu-burger.png"
       alt="iconAside"
@@ -33,7 +33,9 @@
     </header>
     <aside>
       <button id="close-aside" title="Fermez la barre de filtres">X</button>
-      
+      <button onclick="api.previousPage()">Précédent</button>
+      <button onclick="api.nextPage()">Suivant</button>
+
       <span id="totalPokemon"></span>
       <div>
         <h2>Filtrer par nom</h2>
@@ -69,8 +71,7 @@
     </aside>
     <main>
       <div id="content-pokemon"></div>
-      <div id="SinglePokemon">   
-      </div>
+      <div id="SinglePokemon"></div>
     </main>
     <script src="javascript/pokedex.js"></script>
     <script src="javascript/header.js"></script>

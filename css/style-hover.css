@@ -1,44 +1,45 @@
-#poke-type>img:hover{
+.card-body>.poke-type>img:hover {
     transform: scale(1.1);
 }
 
-.poke-stat>li:hover{
+.poke-stat>li:hover {
     transform: scale(1.1);
 }
 
-.toggle-shiny:disabled{
+.toggle-shiny:disabled {
     background: grey;
 }
 
-.toggle-shiny:hover{
+.toggle-shiny:hover,
+.display-SP:hover {
     transform: scale(1.2);
 }
 
-#menu-burger:hover{
+#menu-burger:hover {
     transform: scale(1.1);
 }
 
-aside ul>li>img:hover{
+aside ul>li>img:hover {
     transform: scale(1.2);
 }
 
-#filter-generation>li:hover{
+#filter-generation>li:hover {
     transform: scale(1.2);
 }
 
-.card:hover{
+.card:hover {
     transform: scale(1.04);
 }
 
-.SP-type>img:hover{
+.SP-type>img:hover {
     transform: translateY(-0.3em);
 }
 
-#header-list>li:hover{
+#header-list>li:hover {
     background-color: grey;
 }
 
-#poke-img-shiny-single:hover,#poke-img-single:hover
-{
+#poke-img-shiny-single:hover,
+#poke-img-single:hover {
     transform: scale(1.05);
 }

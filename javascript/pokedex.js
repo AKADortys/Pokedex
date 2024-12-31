@@ -1,16 +1,17 @@
-
 const spanError = document.getElementById("search-error");
 
 const api = {
   urlApi: "https://tyradex.vercel.app/api/v1/",
-  index: 1,
+  index: 0,
+  indexCard: 0,
   pokemons: [],
   types: [],
   generation: [],
   filters: {
     types: null,
-    generation: null
-  }
+    generation: null,
+  },
+  currentData: [],
 };
 //Méthode pour initialiser les composants de la page html
 api.initApp = async () => {
@@ -31,7 +32,7 @@ api.initApp = async () => {
 api.reloadPokemonCard = async (data) => {
   await api.displayPokemons(data);
   api.toggleListerners();
-}
+};
 
 //méthode pour recharger le conteneur singlePokemon
 api.reloadSinglePokemon = async (data) => {
@@ -77,30 +78,29 @@ api.getAllGenerations = (data) => {
   const uniqueGeneration = [];
   data.forEach((pokemon) => {
     if (pokemon.pokedex_id !== 0) {
-        // Vérifie si le type existe déjà dans le tableau
-        const exists = uniqueGeneration.find( (p) => p === pokemon.generation );
-        if (!exists) {
-          uniqueGeneration.push(pokemon.generation);
-        }
-      ;
+      // Vérifie si le type existe déjà dans le tableau
+      const exists = uniqueGeneration.find((p) => p === pokemon.generation);
+      if (!exists) {
+        uniqueGeneration.push(pokemon.generation);
+      }
     }
   });
   api.generation = uniqueGeneration;
   return;
-}
+};
 
 //méthode pour naviguer vers un pokémon précis via son index
 api.goToPokemon = () => {
-  return api.pokemons.filter((element) => element.pokedex_id === api.index)
+  return api.pokemons.filter((element) => element.pokedex_id === api.index);
 };
 
 //Méthode pour filtrer avec le pokedex_id
-api.filterById = (id) =>{
-  return api.pokemons.filter((element) => element.pokedex_id === id)
-}
+api.filterById = (id) => {
+  return api.pokemons.filter((element) => element.pokedex_id === id);
+};
 
 //méthode pour récupérer le pokémons via du texte ( renvoie le premier pokémon trouvé)
-api.filterByName = (input) => {  
+api.filterByName = (input) => {
   spanError.textContent = "";
   const poke = api.pokemons.find(
     (p) => p.name.fr.toLowerCase() === input.toLowerCase()
@@ -122,27 +122,26 @@ api.filterByName = (input) => {
       api.reloadPokemonCard(pokemon);
     }
   }
-  return
+  return;
 };
 
 //Méthode pour filtrer le pokemon par type
-api.filterByType = (data,id) => {
+api.filterByType = (data, id) => {
   return data.filter(
     (pokemon) =>
-      pokemon.pokedex_id !== 0 &&
-      pokemon.types.some((type) => type.name === id)
+      pokemon.pokedex_id !== 0 && pokemon.types.some((type) => type.name === id)
   );
 };
 
 //Méthode pour filtrer le pokemon par génération
-api.filterByGeneration = (data,id) => {
-return data.filter(
-(pokemon) => pokemon.pokedex_id !== 0 && pokemon.generation === parseInt(id)
-);
+api.filterByGeneration = (data, id) => {
+  return data.filter(
+    (pokemon) => pokemon.pokedex_id !== 0 && pokemon.generation === parseInt(id)
+  );
 };
 
 //Méthode pour filtrer les pokémons par type et génération
-api.filterGroup = () =>{
+api.filterGroup = () => {
   let filterPokemons = api.pokemons;
   console.log("Pokémons avant filtrage :", filterPokemons);
   if (api.filters.types !== null) {
@@ -152,45 +151,55 @@ api.filterGroup = () =>{
   }
   if (api.filters.generation !== null) {
     console.log("Filtrage par génération :", api.filters.generation);
-    filterPokemons = api.filterByGeneration(filterPokemons, api.filters.generation);
+    filterPokemons = api.filterByGeneration(
+      filterPokemons,
+      api.filters.generation
+    );
     console.log("Pokémons après filtrage par génération :", filterPokemons);
   }
-  api.reloadPokemonCard(filterPokemons)
-}
+  api.indexCard = 0;
+  api.currentData = filterPokemons;
+  api.reloadPokemonCard(filterPokemons);
+};
 
-api.filterReset = () =>{
+api.filterReset = () => {
   api.filters = { types: null, generation: null };
-}
+  api.displayPokemons(api.pokemons);
+};
 
+api.showDetails = (id) => {
+  api.index = id;
+  api.displayPokemon(api.goToPokemon());
+  api.toggleListerners();
+};
 //Méthode pour afficher une seule fiche de pokémons
 api.displayPokemon = (data) => {
   if (data == null) return;
   let pokemontab = Array.isArray(data) ? data : [data];
   let element = pokemontab[0];
-  api.index = element.pokedex_id
+  api.index = element.pokedex_id;
   const container = document.getElementById("SinglePokemon");
   container.innerHTML = ""; // Réinitialise le contenu avant d'ajouter de nouveaux éléments
-  
+
   if (element.pokedex_id !== 0) {
     let response = `
           <div class="SP-identification">
               <div class="SP-Image">
                   <img src="${element.sprites.regular}" id="poke-img-single" alt="Image normale" title="${element.name.fr}">
-                  <img src="${element.sprites.shiny}" id="poke-img-shiny-single" alt="Image shiny" title="${element.name.fr}"></div><div class="SP-type">`
+                  <img src="${element.sprites.shiny}" id="poke-img-shiny-single" alt="Image shiny" title="${element.name.fr}"></div><div class="SP-type">`;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Affichage des images des types du pokémon
-              if (element.types !== null) {
-                element.types.forEach((elementType) => {
-                  response += `<img src="${elementType.image}" title="${elementType.name}" alt="${elementType.name}" />`;
-                });
-              }
+    if (element.types !== null) {
+      element.types.forEach((elementType) => {
+        response += `<img src="${elementType.image}" title="${elementType.name}" alt="${elementType.name}" />`;
+      });
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    response += "</div>"
+    response += "</div>";
     //Affichage des stats du pokémon avec un diagrame Chart.js voir ---> ./chartPokemon.js
-    if(element.stats !== null){
-      response += 
-      `
+    if (element.stats !== null) {
+      response += `
       <div class="SP-stats">
         <div class="chart-radar">
         <canvas class="chart" data-id="${element.pokedex_id}"></canvas>
@@ -201,7 +210,7 @@ api.displayPokemon = (data) => {
       </div>`;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  
+
     //Affichage du nom et des infos du pokémon
     response += `</div>
           <div class="SP-body">
@@ -217,34 +226,36 @@ api.displayPokemon = (data) => {
     //Affichage des talents du pokémon
     response += `<div class="talents"> <h3>Talents du pokémon</h3>`;
     element.talents.forEach((item) => {
-      response += `<p>${item.name} ${item.tc ? "Talent caché":"Talent de base"}</p>`;
-    })
+      response += `<p>${item.name} ${item.tc ? "Talent caché" : "Talent de base"}</p>`;
+    });
     response += "</div>";
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Affichage des évolutions précédente et suivante
-    
-    if(element.evolution !== null){
-      response +=`<div class="evolution">`;
-      
-      if(element.evolution.pre !== null){
-        response += '<h3>Evolution précedente</h3><ul class="SP-evolution-pre">';
+
+    if (element.evolution !== null) {
+      response += `<div class="evolution">`;
+
+      if (element.evolution.pre !== null) {
+        response +=
+          '<h3>Evolution précedente</h3><ul class="SP-evolution-pre">';
         element.evolution.pre.forEach((item) => {
-          const pokemon = api.filterById(item.pokedex_id)
+          const pokemon = api.filterById(item.pokedex_id);
           response += `<li><img src="${pokemon[0].sprites.regular}" title="${pokemon[0].name.fr}">
                       <button onclick="api.reloadSinglePokemon(api.filterById(${pokemon[0].pokedex_id}))">Voir fiche</button>
                       Condition : ${item.condition}</li>`;
-        })
+        });
       }
-      
-      if(element.evolution.next !== null){
-        response += '</ul><h3>Evolution suivante</h3><ul class="SP-evolution-next">'
+
+      if (element.evolution.next !== null) {
+        response +=
+          '</ul><h3>Evolution suivante</h3><ul class="SP-evolution-next">';
         element.evolution.next.forEach((item) => {
-          const pokemon = api.filterById(item.pokedex_id)
+          const pokemon = api.filterById(item.pokedex_id);
           response += `<li><img src="${pokemon[0].sprites.regular}" title="${pokemon[0].name.fr}">
                       <button onclick="api.reloadSinglePokemon(api.filterById(${pokemon[0].pokedex_id}))">Voir fiche</button>
                       Condition : ${item.condition}</li>`;
-        })
+        });
       }
       response += "</ul></div>";
     }
@@ -255,60 +266,76 @@ api.displayPokemon = (data) => {
     card.setAttribute("class", "SingleCard");
     container.appendChild(card);
   }
-}
+};
 
 //méthode pour afficher les informations du pokémon dans les éléments html
 api.displayPokemons = (data) => {
-  if (data == null) return;
-  let _data = Array.isArray(data) ? data : [data];
+  if (!data) return;
+
+  const ITEMS_PER_PAGE = 24; // Nombre de Pokémon par page
+  api.currentData = Array.isArray(data) ? data : [data]; // Stockage des données dans currentData
+  const totalPokemon = api.currentData.length;
+
+  // Déterminer les indices de début et de fin pour la pagination
+  const startIndex = api.indexCard * ITEMS_PER_PAGE;
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalPokemon);
+
+  // Filtrer les Pokémon à afficher pour cette page
+  const paginatedData = api.currentData.slice(startIndex, endIndex);
+
+  // Référence au conteneur HTML
   const container = document.getElementById("content-pokemon");
   container.innerHTML = ""; // Réinitialise le contenu avant d'ajouter de nouveaux éléments
 
-  _data.forEach((element) => {
-    if (element.pokedex_id !== 0) {
+  paginatedData.forEach((element) => {
+    if (element.pokedex_id) {
       let response = `
-            <div class="identification">
-                <h2 class="poke-name">${element.name.fr} - ${element.name.en} - ${element.name.jp}</h2>
-                <div>
-                    <img src="${element.sprites.regular}" class="poke-img" id="poke-img-${element.pokedex_id}" alt="Image normale" title="${element.name.fr}">
-                    <img src="${element.sprites.shiny}" class="poke-img-shiny" id="poke-img-shiny-${element.pokedex_id}" alt="Image shiny" title="${element.name.fr}">
-                </div>
-                <button class="toggle-shiny" data-id="${element.pokedex_id}" title="Afficher/Masquer le modèle Shiny"></button>
-            </div>
-            <div class="card-body">
-                <div id="poke-info">
-                    <p>Taille : ${element.height}</p>
-                    <p>Poids : ${element.weight}</p>
-                </div>
-                <div id="poke-type">`;
-
+        <div class="card-body">
+            <h2 class="poke-name">${element.name.fr} - ${element.name.en}</h2>
+            <div>
+                <img src="${element.sprites.regular}" class="poke-img" id="poke-img-${element.pokedex_id}" alt="Image normale" title="${element.name.fr}">
+                <img src="${element.sprites.shiny}" class="poke-img-shiny" id="poke-img-shiny-${element.pokedex_id}" alt="Image shiny" title="${element.name.fr}">
+            </div><div class="poke-type">`;
       if (element.types !== null) {
         element.types.forEach((elementType) => {
           response += `<img src="${elementType.image}" title="${elementType.name}" alt="${elementType.name}" />`;
         });
       }
-      if (element.stats !== null) {
-        response += `
-                </div>
-                <h3>Statistique du Pokémon</h3>
-                <ul class="poke-stat">
-                <li title="Point de vie"><img src="images/heart.png" alt="Coeur"> ${element.stats.hp}</li>
-                <li title="Point d'attaque"><img src="images/damage.png" alt="Epées"> ${element.stats.atk}</li>
-                <li title="Defense"><img src="images/shield.png" alt="Bouclier"> ${element.stats.def}</li>
-                <li title="Vitesse"><img src="images/speed.png" alt="Vitesse"> ${element.stats.vit}</li>
-                </ul>`;
-      }
+      response += `
+      </div>
+        <button class="toggle-shiny" data-id="${element.pokedex_id}" title="Afficher/Masquer le modèle Shiny"></button>
+        <button class="display-SP" onclick="api.showDetails(${element.pokedex_id})" title="Afficher la fiche du pokémon"></button>
+      </div>`;
       const card = document.createElement("div");
       card.innerHTML = response;
       card.setAttribute("class", "card");
       container.appendChild(card);
     }
   });
+
+  // Mettre à jour le compteur total
   const span = document.getElementById("totalPokemon");
-  span.innerText = `${_data.length} résultats`;
-  return
+  span.innerText = `Page ${api.indexCard + 1} : ${paginatedData.length} sur ${totalPokemon} résultats`;
+
+  return;
 };
 
+// Méthodes pour naviguer entre les pages
+api.nextPage = () => {
+  if ((api.indexCard + 1) * 20 < api.currentData.length) {
+    api.indexCard++;
+    api.displayPokemons(api.currentData); // Appel avec les données actuelles
+    api.toggleListerners();
+  }
+};
+
+api.previousPage = () => {
+  if (api.indexCard > 0) {
+    api.indexCard--;
+    api.displayPokemons(api.currentData);
+    api.toggleListerners();
+  }
+};
 //méthode pour afficher les types dans une liste
 api.displayTypesFilter = (data) => {
   const ul = document.getElementById("filter-types");
@@ -322,14 +349,13 @@ api.displayTypesFilter = (data) => {
 
 //Méthode pour afficher les generation dans les filtres
 api.displayGenerationFilter = (data) => {
-  const ul = document.getElementById("filter-generation")
+  const ul = document.getElementById("filter-generation");
   let innerHTML = "";
   data.forEach((generation) => {
     innerHTML += `<li class="filter-gen" data-id="${generation}">Génération n°${generation}</li>`;
   });
   ul.innerHTML = innerHTML;
-  return
-}
-
+  return;
+};
 
 api.initApp();
