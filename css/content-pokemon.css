@@ -87,7 +87,7 @@
 
 
 #content-pokemon {
-    width: 95%;
+    width: 90%;
     max-height: 90vh;
     /* Ajuste la hauteur dynamique */
     overflow-y: auto;
@@ -109,6 +109,9 @@
     scrollbar-width: thin;
     /* Scrollbar fine (Firefox) */
     gap: 0.8em;
+    background-color: rgba(255, 255, 255, 0.811);
+    box-shadow: 5px 4px 3px 0px rgba(0, 0, 0, 1);
+
 }
 
 #content-pokemon::-webkit-scrollbar {

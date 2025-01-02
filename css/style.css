@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
 
 body {
-    padding-top: 3em;
+    padding-top: 3.3em;
     margin: 0;
-    background-color: rgb(253, 247, 247);
+    background-color: #e5e5f7;
+    background-image: radial-gradient(#fe0f0f 0.5px, #e5e5f7 0.5px);
+    background-size: 10px 10px;
 }
 
 h1 {

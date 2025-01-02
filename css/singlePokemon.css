@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: space-between;
     width: 50%;
-    background-color: rgba(240, 248, 255, 0.527);
+    background-color: rgb(157, 159, 160);
     gap: 0.8em 0;
     border: 0.2em solid black;
     border-radius: 1%;
@@ -169,5 +169,4 @@
     background-color: #D8D2D4;
     border-bottom: solid 0.2em black;
     border-top: solid 0.2em black;
-    margin-top: 0.2em;
 }

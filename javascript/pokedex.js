@@ -2,8 +2,7 @@ const spanError = document.getElementById("search-error");
 
 const api = {
   urlApi: "https://tyradex.vercel.app/api/v1/",
-  index: 0,
-  indexCard: 0,
+  index: 1,
   pokemons: [],
   types: [],
   generation: [],
@@ -167,10 +166,10 @@ api.filterReset = () => {
   api.displayPokemons(api.pokemons);
 };
 
-api.showDetails = (id) => {
+api.showDetails = async (id) => {
   api.index = id;
-  api.displayPokemon(api.goToPokemon());
-  api.toggleListerners();
+  await api.displayPokemon(api.goToPokemon());
+  api.displayChart();
 };
 //Méthode pour afficher une seule fiche de pokémons
 api.displayPokemon = (data) => {
@@ -272,22 +271,13 @@ api.displayPokemon = (data) => {
 api.displayPokemons = (data) => {
   if (!data) return;
 
-  const ITEMS_PER_PAGE = 24; // Nombre de Pokémon par page
-  api.currentData = Array.isArray(data) ? data : [data]; // Stockage des données dans currentData
-  const totalPokemon = api.currentData.length;
-
-  // Déterminer les indices de début et de fin pour la pagination
-  const startIndex = api.indexCard * ITEMS_PER_PAGE;
-  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalPokemon);
-
-  // Filtrer les Pokémon à afficher pour cette page
-  const paginatedData = api.currentData.slice(startIndex, endIndex);
+  const pokemon = Array.isArray(data) ? data : [data]; // Stockage des données dans currentData
 
   // Référence au conteneur HTML
   const container = document.getElementById("content-pokemon");
   container.innerHTML = ""; // Réinitialise le contenu avant d'ajouter de nouveaux éléments
 
-  paginatedData.forEach((element) => {
+  pokemon.forEach((element) => {
     if (element.pokedex_id) {
       let response = `
         <div class="card-body">
@@ -315,27 +305,11 @@ api.displayPokemons = (data) => {
 
   // Mettre à jour le compteur total
   const span = document.getElementById("totalPokemon");
-  span.innerText = `Page ${api.indexCard + 1} : ${paginatedData.length} sur ${totalPokemon} résultats`;
+  span.innerText = `${pokemon.length} résultats`;
 
   return;
 };
 
-// Méthodes pour naviguer entre les pages
-api.nextPage = () => {
-  if ((api.indexCard + 1) * 20 < api.currentData.length) {
-    api.indexCard++;
-    api.displayPokemons(api.currentData); // Appel avec les données actuelles
-    api.toggleListerners();
-  }
-};
-
-api.previousPage = () => {
-  if (api.indexCard > 0) {
-    api.indexCard--;
-    api.displayPokemons(api.currentData);
-    api.toggleListerners();
-  }
-};
 //méthode pour afficher les types dans une liste
 api.displayTypesFilter = (data) => {
   const ul = document.getElementById("filter-types");
