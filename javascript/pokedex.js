@@ -169,6 +169,11 @@ api.filterReset = () => {
 api.showDetails = async (id) => {
   api.index = id;
   await api.displayPokemon(api.goToPokemon());
+  document.getElementById("content-pokemon").style.display = "none";
+  document.querySelector("#menu-burger").style.display = "none";
+  document.getElementById("SinglePokemon").style.display = "flex";
+  document.getElementById("btn-next").style.display = "block";
+  document.getElementById("btn-prev").style.display = "block";
   api.displayChart();
 };
 //Méthode pour afficher une seule fiche de pokémons

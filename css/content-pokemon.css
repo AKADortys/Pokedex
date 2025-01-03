@@ -2,6 +2,7 @@
     text-align: center;
     font-weight: bold;
     font-style: oblique;
+    font-size: 1em;
     color: white;
     border-bottom: black solid 0.1em;
     margin: 0.3em;
@@ -70,8 +71,8 @@
 
 .toggle-shiny {
     margin: 0 1em;
-    width: 10%;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     background-image: url('../images/Shiny.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -125,8 +126,8 @@
 
 .display-SP {
     margin: 0 1em;
-    width: 10%;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     background-image: url('../images/search.png');
     background-size: contain;
     background-repeat: no-repeat;
