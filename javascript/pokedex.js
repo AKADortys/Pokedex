@@ -242,26 +242,30 @@ api.displayPokemon = (data) => {
 
       if (element.evolution.pre !== null) {
         response +=
-          '<h3>Evolution précedente</h3><ul class="SP-evolution-pre">';
+          '<ul class="SP-evolution-pre"><h3>Evolution précedente</h3>';
         element.evolution.pre.forEach((item) => {
           const pokemon = api.filterById(item.pokedex_id);
           response += `<li><img src="${pokemon[0].sprites.regular}" title="${pokemon[0].name.fr}">
                       <button onclick="api.reloadSinglePokemon(api.filterById(${pokemon[0].pokedex_id}))">Voir fiche</button>
                       Condition : ${item.condition}</li>`;
         });
+        response += "</ul>";
+      } else {
+        response += `<ul class="SP-evolution-pre"><h3>Pas d'évolution précédente</h3></ul>`;
       }
 
       if (element.evolution.next !== null) {
-        response +=
-          '</ul><h3>Evolution suivante</h3><ul class="SP-evolution-next">';
+        response += '<ul class="SP-evolution-next"><h3>Evolution suivante</h3>';
         element.evolution.next.forEach((item) => {
           const pokemon = api.filterById(item.pokedex_id);
           response += `<li><img src="${pokemon[0].sprites.regular}" title="${pokemon[0].name.fr}">
                       <button onclick="api.reloadSinglePokemon(api.filterById(${pokemon[0].pokedex_id}))">Voir fiche</button>
                       Condition : ${item.condition}</li>`;
         });
+        response += "</ul></div>";
+      } else {
+        response += `<ul class="SP-evolution-next"><h3>Pas d'évolution suivante</h3></ul></div>`;
       }
-      response += "</ul></div>";
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

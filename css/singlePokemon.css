@@ -50,7 +50,7 @@
 
 
 .SP-body {
-    width: 50%;
+    width: 55%;
     background-color: rgba(240, 248, 255, 0.527);
     display: flex;
     flex-wrap: wrap;
@@ -133,26 +133,30 @@
 }
 
 .evolution {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
-.evolution {
-    width: 100%;
-}
 
 .evolution li {
     width: 100%;
     text-align: center;
 }
 
+.evolution button {
+    width: 20%;
+    padding: 0.5em;
+    margin: 0.2em;
+    border: none;
+    background-color: #4660DC;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 .SP-evolution-pre,
 .SP-evolution-next {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 50%;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -161,6 +165,17 @@
 .SP-evolution-pre>li>img,
 .SP-evolution-next>li>img {
     width: 20%;
+}
+
+.SP-evolution-next>li,
+.SP-evolution-pre>li {
+    padding: 0.2em;
+    color: goldenrod;
+    font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 .talents {
