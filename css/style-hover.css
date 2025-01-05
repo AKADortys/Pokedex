@@ -43,3 +43,7 @@ aside ul>li>img:hover {
 #poke-img-single:hover {
     transform: scale(1.05);
 }
+
+.SP-info tr:hover {
+    border: solid black 0.15em;
+}

@@ -284,9 +284,17 @@ api.displayPokemon = (data) => {
                       <button onclick="api.reloadSinglePokemon(api.filterById(${pokemon.pokedex_id}))">Voir fiche</button>
                       Condition : ${item.condition}</li>`;
         });
-        response += "</ul></div>";
+        response += "</ul>";
       } else {
         response += `<ul class="SP-evolution-next"><h3>Pas d'évolution suivante</h3></ul></div>`;
+      }
+
+      if (element.evolution.mega !== null) {
+        response += `<ul class="SP-evolution-mega"><h3>Mega évolution</h3>`;
+        element.evolution.mega.forEach((item) => {
+          response += `<li>${item.orbe}<img src="${item.sprites.regular}"></li>`;
+        });
+        response += "</ul></div>";
       }
     }
 

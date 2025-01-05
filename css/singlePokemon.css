@@ -1,5 +1,5 @@
 #SinglePokemon {
-    width: 80%;
+    width: 90%;
     font-family: 'Preahvihear', sans-serif;
     display: none;
 }
@@ -131,10 +131,6 @@
     border-collapse: collapse;
 }
 
-.SP-info tr:hover {
-    transform: scale(1.05);
-    border: solid black 0.15em;
-}
 
 .SP-info td:nth-child(2) {
     font-weight: bold;
