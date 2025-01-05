@@ -220,10 +220,32 @@ api.displayPokemon = (data) => {
           <div class="SP-body">
               <h2 class="poke-name">${element.name.fr} - ${element.name.en} - ${element.name.jp}</h2>
               <div class="SP-info">
-                  <p>Taille : <span>${element.height}</span></p>
-                  <p>Poids : <span>${element.weight}</span></p>
-                  <p>Chances de capture : <span>${element.catch_rate}</span>%</p>
-                  <p>XP lvl.100 : <span>${element.level_100}</span></p>
+                <table>
+                  <tr>
+                    <td>Catégorie</td>
+                    <td>${element.category}</td>
+                  </tr>
+                  <tr>
+                    <td>Génération</td>
+                    <td>${element.generation}</td>
+                  </tr>
+                  <tr>
+                    <td>Taille</td>
+                    <td>${element.height}</td>
+                  </tr>
+                  <tr>
+                    <td>Poids</td>
+                    <td>${element.weight}</td>
+                  </tr>
+                  <tr>
+                    <td>Chances de capture</td>
+                    <td>${element.catch_rate}</td>
+                  </tr>
+                  <tr>
+                    <td>XP lvl.100</td>
+                    <td>${element.level_100}</td>
+                  </tr>
+                </table>
               </div>`;
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -257,9 +279,9 @@ api.displayPokemon = (data) => {
       if (element.evolution.next !== null) {
         response += '<ul class="SP-evolution-next"><h3>Evolution suivante</h3>';
         element.evolution.next.forEach((item) => {
-          const pokemon = api.filterById(item.pokedex_id);
-          response += `<li><img src="${pokemon[0].sprites.regular}" title="${pokemon[0].name.fr}">
-                      <button onclick="api.reloadSinglePokemon(api.filterById(${pokemon[0].pokedex_id}))">Voir fiche</button>
+          const pokemon = api.filterById(item.pokedex_id)[0];
+          response += `<li><img src="${pokemon.sprites.regular}" title="${pokemon.name.fr}">
+                      <button onclick="api.reloadSinglePokemon(api.filterById(${pokemon.pokedex_id}))">Voir fiche</button>
                       Condition : ${item.condition}</li>`;
         });
         response += "</ul></div>";
